@@ -7,6 +7,10 @@
         <include>globalBackground</include>
         <control type="image">
             <include>dimensionsFullscreen</include>
+            <!--posx>0</posx>
+            <posy>row-5-begin</posy>
+            <width>fullscreenWidth</width>
+            <height>12-row</height-->
             <texture>colors/black.png</texture>
             <aspectratio>stretch</aspectratio>
             <colordiffuse>99ffffff</colordiffuse>

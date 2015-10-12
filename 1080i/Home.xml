@@ -58,27 +58,27 @@
         </control>
         <!--browse controls-->
         <control type="group">
-            <posx>col-1-begin</posx>
-            <posy>row-8-begin</posy>
+            <posx>col-4-begin</posx>
+            <posy>row-2-begin</posy>
             <!--animations-->
-            <animation effect="fade" start="0" end="100" delay="500" time="600">WindowOpen</animation>
+            <!--animation effect="fade" start="0" end="100" delay="500" time="600">WindowOpen</animation>
             <animation condition="SubString(Container(9000).NumItems,3)" effect="slide" end="575,0" time="0">conditional</animation>
             <animation condition="SubString(Container(9000).NumItems,4)" effect="slide" end="468,0" time="0">conditional</animation>
             <animation condition="SubString(Container(9000).NumItems,5)" effect="slide" end="361,0" time="0">conditional</animation>
             <animation condition="SubString(Container(9000).NumItems,6)" effect="slide" end="254,0" time="0">conditional</animation>
             <animation condition="SubString(Container(9000).NumItems,7)" effect="slide" end="147,0" time="0">conditional</animation>
             <animation condition="SubString(Container(9000).NumItems,8)" effect="slide" end="40,0" time="0">conditional</animation>
-            <animation condition="SubString(Container(9000).NumItems,9)" effect="slide" end="-67,0" time="0">conditional</animation>
+            <animation condition="SubString(Container(9000).NumItems,9)" effect="slide" end="-67,0" time="0">conditional</animation-->
             <control type="list" id="9000">
                 <posx>0</posx>
                 <posy>0</posy>
-                <width>2000</width>
-                <height>3-col</height>
-                <orientation>horizontal</orientation>
+                <width>11-col</width>
+                <height>16-col</height>
+                <!--orientation>horizontal</orientation-->
                 <onup>ActivateWindow(systeminfo)</onup>
                 <ondown>ActivateWindow(weather)</ondown>
-                <itemlayout width="3-col" height="3-col">
-                    <control type="image">
+                <itemlayout width="8-col" height="1-col">
+                    <!--control type="image">
                         <posx>0</posx>
                         <posy>0</posy>
                         <width>2-col</width>
@@ -97,10 +97,28 @@
                         <textcolor>selected</textcolor>
                         <shadowcolor>-</shadowcolor>
                         <label>$INFO[ListItem.label2]</label>
+                    </control-->
+                    <control type="image">
+                        <posx>0</posx>
+                        <posy>0</posy>
+                        <width>8-col</width>
+                        <height>1-col</height>
+                        <aspectratio scalediffuse="false">scale</aspectratio>
+                        <texture border="0">colors/black.png</texture>
+                        <bordersize>0</bordersize>
+                        <colordiffuse>40FFFFFF</colordiffuse>
+                    </control>
+                    <control type="label">
+                        <posx>10</posx>
+                        <posy>0</posy>
+                        <font>LargeStrong</font>
+                        <textcolor>unselected</textcolor>
+                        <shadowcolor>-</shadowcolor>
+                        <label>$INFO[ListItem.label]</label>
                     </control>
                 </itemlayout>
-                <focusedlayout width="3-col" height="3-col">
-                    <control type="image">
+                <focusedlayout width="8-col" height="110">
+                    <!--control type="image">
                         <posx>0</posx>
                         <posy>0</posy>
                         <width>2-col</width>
@@ -119,21 +137,55 @@
                         <textcolor>black</textcolor>
                         <shadowcolor>-</shadowcolor>
                         <label>$INFO[ListItem.label2]</label>
+                    </control-->
+                    <control type="image">
+                        <posx>0</posx>
+                        <posy>0</posy>
+                        <width>8-col</width>
+                        <height>110</height>
+                        <aspectratio scalediffuse="false">scale</aspectratio>
+                        <texture border="0">colors/black.png</texture>
+                        <bordersize>0</bordersize>
+                        <colordiffuse>99FFFFFF</colordiffuse>
+                    </control>
+                    <control type="label">
+                        <posx>10</posx>
+                        <posy>0</posy>
+                        <font>LargeStrong</font>
+                        <textcolor>selected</textcolor>
+                        <shadowcolor>-</shadowcolor>
+                        <label>$INFO[ListItem.label]</label>
+                    </control>
+                    <control type="label">
+                        <posx>30</posx>
+                        <posy>50</posy>
+                        <font>regularMedium</font>
+                        <textcolor>unselected</textcolor>
+                        <shadowcolor>-</shadowcolor>
+                        <label>$INFO[ListItem.label2]</label>
                     </control>
                 </focusedlayout>
                 <content>
                     <item>
-                        <visible>!Skin.HasSetting(hideVideo)</visible>
+                        <!--visible>!Skin.HasSetting(hideVideo)</visible>
                         <label>31000</label>
-                        <label2></label2>
+                        <label2></label2-->
+                        <label>Watch Recordings</label>
+                        <label2>Television in the "Default" group</label2>
                         <thumb>-</thumb>
-                        <onclick condition="!Library.HasContent(Video)">ActivateWindow(Videos,files)</onclick>
-                        <onclick condition="!Library.HasContent(Video)">Skin.SetString(showRecentVideoItems,false)</onclick>
-                        <onclick condition="Library.HasContent(Video)">ActivateWindow(Videos,videodb://)</onclick>
-                        <onclick condition="Library.HasContent(Video)">Skin.SetString(showRecentVideoItems,true)</onclick>
+                        <onclick>ActivateWindow(tvrecordings,pvr://recordings/Default/)</onclick>
                     </item>
                     <item>
-                        <visible>!Skin.HasSetting(hideMusic)</visible>
+                        <!--visible>!Skin.HasSetting(hideVideo)</visible>
+                        <label>31000</label>
+                        <label2></label2-->
+                        <label>All Recordings</label>
+                        <label2>View all Recording Groups</label2>
+                        <thumb>-</thumb>
+                        <onclick>ActivateWindow(tvrecordings,pvr://recordings/)</onclick>
+                    </item>
+                    <item>
+                        <visible>!Skin.HasSetting(hideMusic) + Library.HasContent(Music)</visible>
                         <label>31001</label>
                         <label2></label2>
                         <thumb>-</thumb>
@@ -143,7 +195,7 @@
                         <onclick condition="Library.HasContent(Music)">Skin.SetString(showRecentMusicItems,true)</onclick>
                     </item>
                     <item>
-                        <visible>!Skin.HasSetting(hidePictures)</visible>
+                        <visible>!Skin.HasSetting(hidePictures) + Library.HasContent(Pictures)</visible>
                         <label>31002</label>
                         <label2></label2>
                         <thumb>-</thumb>

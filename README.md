@@ -1,3 +1,5 @@
+This is the b-pass fork of maximinimalism to be more mythtv-like and also to look the way I want.
+
 skin.maximinimalism
 ===================
 

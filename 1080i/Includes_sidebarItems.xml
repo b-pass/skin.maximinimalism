@@ -69,7 +69,7 @@
             <width>4-col</width>
             <height>12-row</height>
             <itemgap>0</itemgap>
-            <onright>9000</onright>
+            <onright>50</onright>
             <onup>62</onup>
             <ondown>62</ondown>
             <include condition="Window.isactive(videolibrary) | window.isactive(videoplaylist) | window.isactive(tvchannels) | window.isactive(tvguide) | window.isactive(TVRecordings) | window.isactive(tvtimers)">videoSideMenu</include>
