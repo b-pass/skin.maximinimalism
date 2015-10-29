@@ -57,28 +57,122 @@
                     </animation>
                     
                     <control type="panel" id="50">
-                        <include condition="Container.ListItem(1).IsFolder">pvrPanel_FolderList</include>
-                        <include condition="!Container.ListItem(1).IsFolder">pvrPanel_ShowList</include>
+                        <include>pvrPanel_FolderList</include>
                     </control>
                     
                     <control type="panel" id="9900">
-                        <include condition="Container.ListItemPosition(1).IsFolder">pvrPanel2_ShowList</include>
-                        <include condition="!Container.ListItemPosition(1).IsFolder">pvrPanel2_FolderList</include>
+                        <include>pvrPanel2_ShowList</include>
                     </control>
                     
                     <!--Additional info-->
                     <control type="group">
-                        <posx>0</posx>
-                        <posy>672</posy>
-                        <control type="label">
+                        <posx>col-8-begin</posx>
+                        <posy>-12</posy>
+                        <control type="textbox">
                             <posx>0</posx>
                             <posy>0</posy>
-                            <width>12-col-gutter</width>
-                            <font>itemTitle</font>
+                            <width>15-col</width>
+                            <height>15-row</height>
+                            <font>small</font>
                             <textcolor>selected</textcolor>
                             <selectedcolor>selected</selectedcolor>
                             <shadowcolor>-</shadowcolor>
-                            <label>$INFO[Pvr.BackendDiskSpace]</label>
+                            <autoscroll delay="0" time="500" repeat="1000">True</autoscroll>
+                            <label>
+$INFO[Pvr.BackendDiskSpace]
+Label = $INFO[ListItem.Label]
+Label2 = $INFO[ListItem.Label2]
+Title = $INFO[ListItem.Title]
+OriginalTitle = $INFO[ListItem.OriginalTitle]
+SortLetter = $INFO[ListItem.SortLetter]
+Trailer = $INFO[ListItem.Trailer]
+Writer = $INFO[ListItem.Writer]
+Tagline = $INFO[ListItem.Tagline]
+PlotOutline = $INFO[ListItem.PlotOutline]
+Plot = $INFO[ListItem.Plot]
+IMDBNumber = $INFO[ListItem.IMDBNumber]
+EpisodeName = $INFO[ListItem.EpisodeName]
+PercentPlayed = $INFO[ListItem.PercentPlayed]
+LastPlayed = $INFO[ListItem.LastPlayed]
+PlayCount = $INFO[ListItem.PlayCount]
+StartTime = $INFO[ListItem.StartTime]
+EndTime = $INFO[ListItem.EndTime]
+StartDate = $INFO[ListItem.StartDate]
+Date = $INFO[ListItem.Date]
+ChannelNumber = $INFO[ListItem.ChannelNumber]
+ChannelName = $INFO[ListItem.ChannelName]
+VideoCodec = $INFO[ListItem.VideoCodec]
+VideoResolution = $INFO[ListItem.VideoResolution]
+VideoAspect = $INFO[ListItem.VideoAspect]
+AudioCodec = $INFO[ListItem.AudioCodec]
+AudioChannels = $INFO[ListItem.AudioChannels]
+AudioLanguage = $INFO[ListItem.AudioLanguage]
+SubtitleLanguage = $INFO[ListItem.SubtitleLanguage]
+StartTime = $INFO[ListItem.StartTime]
+EndTime = $INFO[ListItem.EndTime]
+StartDate = $INFO[ListItem.StartDate]
+EndDate = $INFO[ListItem.EndDate]
+NextTitle = $INFO[ListItem.NextTitle]
+NextGenre = $INFO[ListItem.NextGenre]
+NextPlot = $INFO[ListItem.NextPlot]
+NextPlotOutline = $INFO[ListItem.NextPlotOutline]
+NextStartTime = $INFO[ListItem.NextStartTime]
+NextEndTime = $INFO[ListItem.NextEndTime]
+NextStartDate = $INFO[ListItem.NextStartDate]
+NextEndDate = $INFO[ListItem.NextEndDate]
+ChannelName = $INFO[ListItem.ChannelName]
+ChannelNumber = $INFO[ListItem.ChannelNumber]
+ChannelGroup = $INFO[ListItem.ChannelGroup]
+SubChannelNumber = $INFO[ListItem.SubChannelNumber]
+ChannelNumberLabel = $INFO[ListItem.ChannelNumberLabel]
+Progress = $INFO[ListItem.Progress]
+StereoscopicMode = $INFO[ListItem.StereoscopicMode]
+IsSelected = $INFO[ListItem.IsSelected]
+IsPlaying = $INFO[ListItem.IsPlaying]
+IsResumable = $INFO[ListItem.IsResumable]
+IsFolder = $INFO[ListItem.IsFolder]
+IsCollection = $INFO[ListItem.IsCollection]
+IsRecording = $INFO[ListItem.IsRecording]
+Comment = $INFO[ListItem.Comment]
+TrackNumber = $INFO[ListItem.TrackNumber]
+Artist = $INFO[ListItem.Artist]
+AlbumArtist = $INFO[ListItem.AlbumArtist]
+Album = $INFO[ListItem.Album]
+DiscNumber = $INFO[ListItem.DiscNumber]
+Year = $INFO[ListItem.Year]
+Premiered = $INFO[ListItem.Premiered]
+Genre = $INFO[ListItem.Genre]
+Director = $INFO[ListItem.Director]
+Country = $INFO[ListItem.Country]
+Episode = $INFO[ListItem.Episode]
+Season = $INFO[ListItem.Season]
+TVShowTitle = $INFO[ListItem.TVShowTitle]
+Property(TotalSeasons) = $INFO[ListItem.Property(TotalSeasons)]
+Property(TotalEpisodes) = $INFO[ListItem.Property(TotalEpisodes)]
+Property(WatchedEpisodes) = $INFO[ListItem.Property(WatchedEpisodes)]
+Property(UnWatchedEpisodes) = $INFO[ListItem.Property(UnWatchedEpisodes)]
+Property(NumEpisodes) = $INFO[ListItem.Property(NumEpisodes)]
+FileName = $INFO[ListItem.FileName]
+Path = $INFO[ListItem.Path]
+FolderName = $INFO[ListItem.FolderName]
+FolderPath = $INFO[ListItem.FolderPath]
+FileNameAndPath = $INFO[ListItem.FileNameAndPath]
+FileExtension = $INFO[ListItem.FileExtension]
+Date = $INFO[ListItem.Date]
+DateAdded = $INFO[ListItem.DateAdded]
+Size = $INFO[ListItem.Size]
+Rating = $INFO[ListItem.Rating]
+Votes = $INFO[ListItem.Votes]
+RatingAndVotes = $INFO[ListItem.RatingAndVotes]
+Mpaa = $INFO[ListItem.Mpaa]
+ProgramCount = $INFO[ListItem.ProgramCount]
+Duration = $INFO[ListItem.Duration]
+DBTYPE = $INFO[ListItem.DBTYPE]
+DBID = $INFO[ListItem.DBID]
+Cast = $INFO[ListItem.Cast]
+CastAndRole = $INFO[ListItem.CastAndRole]
+Studio = $INFO[ListItem.Studio]
+Top250 = $INFO[ListItem.Top250]</label>
                         </control>
                     </control>
                 </control>

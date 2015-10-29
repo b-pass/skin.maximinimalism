@@ -173,7 +173,7 @@
                         <label>Watch Recordings</label>
                         <label2>Television in the "Default" group</label2>
                         <thumb>-</thumb>
-                        <onclick>ActivateWindow(tvrecordings,pvr://recordings/Default/)</onclick>
+                        <onclick>ActivateWindow(tvrecordings,pvr://recordings/active/Default/)</onclick>
                     </item>
                     <item>
                         <!--visible>!Skin.HasSetting(hideVideo)</visible>

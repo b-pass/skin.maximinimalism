@@ -275,7 +275,7 @@
         <posy>15</posy>
         <width>fullscreenwidth</width>
         <height>1-row</height>
-        <font>smallStrong</font>
+        <font>small</font>
         <textcolor>selected</textcolor>
         <align>left</align>
         <visible>Skin.HasSetting(DebugInfo)</visible>
@@ -285,7 +285,7 @@
         <posy>15</posy>
         <width>fullscreenwidth</width>
         <height>1-row</height>
-        <font>smallStrong</font>
+        <font>small</font>
         <textcolor>selected</textcolor>
         <align>left</align>
         <visible>Skin.HasSetting(DebugInfo)</visible>
