@@ -20,32 +20,33 @@
                 <posy>0</posy>
                 <!--main menu-->
                 <control type="group" id="8000">
-                    <posx>col-1-begin</posx>
-                    <posy>row-2-begin</posy>
+                    <posx>col-0-begin</posx>
+                    <posy>row-1-begin</posy>
                     <include>dateTime</include>
                     <!--include>menuItems</include-->
                 </control>
                 <!--Folder titles-->
                 <control type="group">
                     <posx>col-4-begin</posx>
-                    <posy>row-2-begin</posy>
+                    <posy>row-1-begin</posy>
                     <!--source title-->
                     <control type="label">
                         <posx>0</posx>
                         <posy>0</posy>
                         <width>14-col</width>
                         <font>pageTitle</font>
-                        <label>$LOCALIZE[31006] [COLOR accented]$LOCALIZE[31165][/COLOR]</label>
+                        <label>$LOCALIZE[31165]</label>
                         <textcolor>selected</textcolor>
                     </control>
-                    <!--control type="label">
+                    <control type="label">
                         <posx>0</posx>
                         <posy>45</posy>
                         <width>14-col</width>
                         <font>regular</font>
-                        <label>$INFO[container.numitems] $LOCALIZE[31165]</label>
+                        <!--label>$INFO[container.numitems] $LOCALIZE[31165]</label-->
+                        <label>$INFO[Pvr.BackendDiskSpace]</label>
                         <textcolor>selected</textcolor>
-                    </control-->
+                    </control>
                 </control>
                 <!--Main content listing-->
                  <control type="group" id="9999">
@@ -56,142 +57,476 @@
                         <include>listSlideIn</include>
                     </animation>
                     
-                    <control type="panel" id="50">
-                        <include>pvrPanel_FolderList</include>
+                    <control type="list" id="50">
+                        <posx>-12</posx>
+                        <posy>-12</posy>
+                        <width>6-col</width>
+                        <height>13-row</height>
+                        <onleft>61</onleft>
+                        <onright>9900</onright>
+                        <pagecontrol>60</pagecontrol>
+                        <itemlayout width="8-col" height="1-row">
+                            <control type="image">
+                                <posx>0</posx>
+                                <posy>2</posy>
+                                <width>6-col</width>
+                                <height>53</height>
+                                <aspectratio>stretch</aspectratio>
+                                <texture border="24,0,24,0">UIControls/listitemNF.png</texture>
+                                <bordersize>0</bordersize>
+                                <colordiffuse>99FFFFFF</colordiffuse>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>6-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="8-col" height="1-row" condition="Control.HasFocus(50)">
+                            <control type="image">
+                                <posx>0</posx>
+                                <posy>2</posy>
+                                <width>6-col</width>
+                                <height>53</height>
+                                <aspectratio>stretch</aspectratio>
+                                <texture border="24,0,24,0">UIControls/listitemFO.png</texture>
+                                <bordersize>0</bordersize>
+                                <colordiffuse>FFFFFFFF</colordiffuse>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>6-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>black</textcolor>
+                                <selectedcolor>black</selectedcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </focusedlayout>
+                        <focusedlayout width="8-col" height="1-row" condition="!Control.HasFocus(50)">
+                            <control type="image">
+                                <posx>0</posx>
+                                <posy>2</posy>
+                                <width>6-col</width>
+                                <height>53</height>
+                                <aspectratio>stretch</aspectratio>
+                                <texture border="24,0,24,0">UIControls/listitemFO.png</texture>
+                                <bordersize>0</bordersize>
+                                <colordiffuse>80808080</colordiffuse>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>6-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <selectedcolor>selected</selectedcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </focusedlayout>
                     </control>
                     
-                    <control type="panel" id="9900">
-                        <include>pvrPanel2_ShowList</include>
+                    <control type="list" id="9900">
+                        <posx>col-6-begin</posx>
+                        <posy>-12</posy>
+                        <width>18-col</width>
+                        <height>8-row</height>
+                        <onleft>50</onleft>
+                        <pagecontrol>9901</pagecontrol>
+                        <content>$INFO[ListItem.FolderPath]</content>
+                        <itemlayout width="18-col" height="1-row">
+                            <control type="image">
+                                <posx>0</posx>
+                                <posy>2</posy>
+                                <width>18-col</width>
+                                <height>53</height>
+                                <aspectratio>stretch</aspectratio>
+                                <texture border="24,0,24,0">UIControls/listitemNF.png</texture>
+                                <bordersize>0</bordersize>
+                                <colordiffuse>99FFFFFF</colordiffuse>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <visible>!IsEmpty(ListItem.PlayCount)</visible>
+                                <posx>13-col</posx>
+                                <posy>0</posy>
+                                <width>1-col</width>
+                                <font>symbolLarge</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label></label>
+                            </control>
+                            <control type="label">
+                                <posx>14-col</posx>
+                                <posy>0</posy>
+                                <width>8-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Date]</label>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="18-col" height="1-row" condition="!Control.HasFocus(9900)">
+                            <control type="image">
+                                <posx>0</posx>
+                                <posy>2</posy>
+                                <width>18-col</width>
+                                <height>53</height>
+                                <aspectratio>stretch</aspectratio>
+                                <texture border="24,0,24,0">UIControls/listitemNF.png</texture>
+                                <bordersize>0</bordersize>
+                                <colordiffuse>99FFFFFF</colordiffuse>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <visible>!IsEmpty(ListItem.PlayCount)</visible>
+                                <posx>13-col</posx>
+                                <posy>0</posy>
+                                <width>1-col</width>
+                                <font>symbolLarge</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label></label>
+                            </control>
+                            <control type="label">
+                                <posx>14-col</posx>
+                                <posy>0</posy>
+                                <width>8-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Date]</label>
+                            </control>
+                        </focusedlayout>
+                        <focusedlayout width="18-col" height="1-row" condition="Control.HasFocus(9900)">
+                            <control type="image">
+                                <posx>0</posx>
+                                <posy>2</posy>
+                                <width>18-col</width>
+                                <height>53</height>
+                                <aspectratio>stretch</aspectratio>
+                                <texture border="24,0,24,0">UIControls/listitemFO.png</texture>
+                                <bordersize>0</bordersize>
+                                <colordiffuse>FFFFFFFF</colordiffuse>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>black</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <visible>!IsEmpty(ListItem.PlayCount)</visible>
+                                <posx>13-col</posx>
+                                <posy>0</posy>
+                                <width>1-col</width>
+                                <font>symbolLarge</font>
+                                <textcolor>black</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label></label>
+                            </control>
+                            <control type="label">
+                                <posx>14-col</posx>
+                                <posy>0</posy>
+                                <width>8-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>black</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Date]</label>
+                            </control>
+                        </focusedlayout>
+                    </control>
+                    <control type="scrollbar" id="9901">
+                        <posx>25-col-gutter</posx>
+                        <posy>-10</posy>
+                        <height>8-row</height>
                     </control>
                     
-                    <!--Additional info-->
+                    <control type="group" id="9910">
+                        <posx>col-6-begin</posx>
+                        <posy>8-row</posy>
+                        <width>18-col</width>
+                        <height>6-row</height>
+                        <visible>!Control.HasFocus(9900)</visible>
+                        <control type="image">
+                            <width>18-col</width>
+                            <height>6-row</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture>colors/black.png</texture>
+                            <colordiffuse>99FFFFFF</colordiffuse>
+                        </control>
+                        <control type="image">
+                            <posx>6</posx>
+                            <posy>6</posy>
+                            <height>330</height>
+                            <width>330</width>
+                            <aspectratio>stretch</aspectratio>
+                            <texture>colors/black.png</texture>
+                            <colordiffuse>99FFFFFF</colordiffuse>
+                        </control>
+                        <control type="image">
+                            <posx>6</posx>
+                            <posy>6</posy>
+                            <height>330</height>
+                            <width>330</width>
+                            <align>left</align>
+                            <aspectratio>keep</aspectratio>
+                            <texture>$INFO[Container(9900).ListItem.Art(icon)]</texture>
+                        </control>
+                        <control type="label">
+                            <posx>5-col</posx>
+                            <posy>0</posy>
+                            <width>13-col</width>
+                            <height>1-row</height>
+                            <font>largeStrong</font>
+                            <textcolor>selected</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <label>$INFO[Container(50).ListItem.Label]</label>
+                        </control>
+                        <control type="label">
+                            <posx>5-col</posx>
+                            <posy>1-row</posy>
+                            <width>10-row</width>
+                            <height>1-row</height>
+                            <font>small</font>
+                            <textcolor>selected</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <label>$INFO[Container(9900).ListItem.ChannelName]</label>
+                        </control>
+                        <control type="label">
+                            <posx>5-col</posx>
+                            <posy>2-row</posy>
+                            <width>10-row</width>
+                            <height>1-row</height>
+                            <font>regular</font>
+                            <textcolor>selected</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <visible>IntegerGreaterThan(Container(9900).NumItems,1)</visible>
+                            <label>$INFO[Container(9900).NumItems] episodes</label>
+                        </control>
+                        <control type="label">
+                            <posx>5-col</posx>
+                            <posy>2-row</posy>
+                            <width>10-row</width>
+                            <height>1-row</height>
+                            <font>regular</font>
+                            <textcolor>selected</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <visible>!IntegerGreaterThan(Container(9900).NumItems,1)</visible>
+                            <label>One episode</label>
+                        </control>
+                    </control>
+                    
+                    
+                    <control type="group" id="9911">
+                        <posx>col-6-begin</posx>
+                        <posy>8-row</posy>
+                        <width>18-col</width>
+                        <height>6-row</height>
+                        <visible>Control.HasFocus(9900)</visible>
+                        <control type="image">
+                            <width>18-col</width>
+                            <height>6-row</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture>colors/black.png</texture>
+                            <colordiffuse>99FFFFFF</colordiffuse>
+                        </control>
+                        <control type="image">
+                            <posx>6</posx>
+                            <posy>6</posy>
+                            <height>330</height>
+                            <width>330</width>
+                            <aspectratio>stretch</aspectratio>
+                            <texture>colors/black.png</texture>
+                            <colordiffuse>99FFFFFF</colordiffuse>
+                        </control>
+                        <control type="image">
+                            <posx>6</posx>
+                            <posy>6</posy>
+                            <height>330</height>
+                            <width>330</width>
+                            <align>left</align>
+                            <aspectratio>keep</aspectratio>
+                            <texture>$INFO[Container(9900).ListItem.Art(thumb)]</texture>
+                        </control>
+                        <control type="label">
+                            <posx>5-col</posx>
+                            <posy>0</posy>
+                            <width>13-col</width>
+                            <height>1-row</height>
+                            <font>medium</font>
+                            <textcolor>selected</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <!--scroll>true</scroll-->
+                            <label>$INFO[Container(9900).ListItem.Label]</label>
+                        </control>
+                        <control type="label">
+                            <posx>5-col</posx>
+                            <posy>1-row</posy>
+                            <width>13-col</width>
+                            <height>2-row</height>
+                            <font>small</font>
+                            <textcolor>selected</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <label>$INFO[Container(9900).ListItem.ChannelName][CR]$INFO[Container(9900).ListItem.StartDate] $INFO[Container(9900).ListItem.StartTime]</label>
+                        </control>
+                        <control type="textbox">
+                            <posx>5-col</posx>
+                            <posy>3-row</posy>
+                            <width>12-col</width>
+                            <height>3-row</height>
+                            <font>regular</font>
+                            <textcolor>selected</textcolor>
+                            <shadowcolor>-</shadowcolor>
+                            <autoscroll delay="4000" time="1500" repeat="3000">True</autoscroll>
+                            <label>"$INFO[Container(9900).ListItem.Label]" -- $INFO[Container(9900).ListItem.Plot]</label>
+                        </control>
+                    </control>
+                    <!--
+                    
+                        <focusedlayout width="18-col" height="5-row" condition="Control.HasFocus(9900)">
+                        
+                            <control type="image" id="1">
+                                <posx>4</posx>
+                                <posy>6</posy>
+                                <width>270</width>
+                                <height>270</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture>$INFO[ListItem.Art(thumb)]</texture>
+                            </control>
+                            <control type="image">
+                                <posx>4</posx>
+                                <posy>4</posy>
+                                <width>48</width>
+                                <height>48</height>
+                                <aspectratio scalediffuse="false">scale</aspectratio>
+                                <texture diffuse="masks/circle.png" border="0">colors/offblack.png</texture>
+                            </control>
+                            <control type="label">
+                                <visible>!isempty(ListItem.playcount) + !ListItem.IsResumable</visible>
+                                <posx>11</posx>
+                                <posy>2-row</posy>
+                                <width>38</width>
+                                <font>symbolLarge</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label></label>
+                            </control>
+                            <control type="label">
+                                <posx>4-col</posx>
+                                <posy>0</posy>
+                                <width>15-col</width>
+                                <font>regularStrong</font>
+                                <textcolor>selected</textcolor>
+                                <selectedcolor>selected</selectedcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <posx>14-col</posx>
+                                <posy>1-row</posy>
+                                <width>8-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <selectedcolor>selected</selectedcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Date]</label>
+                            </control>
+                            <control type="label">
+                                <posx>14-col</posx>
+                                <posy>2-row</posy>
+                                <width>8-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <selectedcolor>selected</selectedcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.ChannelName]</label>
+                            </control>
+                            <control type="label">
+                                <posx>15-col</posx>
+                                <posy>3-row</posy>
+                                <width>4-col</width>
+                                <font>small</font>
+                                <textcolor>selected</textcolor>
+                                <selectedcolor>selected</selectedcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Duration]</label>
+                            </control>
+                            <control type="textbox">
+                                <posx>4-col</posx>
+                                <posy>1-row</posy>
+                                <width>10-col-gutter</width>
+                                <height>4-row</height>
+                                <font>small</font>
+                                <textcolor>selected</textcolor>
+                                <selectedcolor>selected</selectedcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Plot]</label>
+                            </control>
+                        </focusedlayout>
+                        -->
+                    
+                    <!--Additional info
                     <control type="group">
                         <posx>col-8-begin</posx>
-                        <posy>-12</posy>
+                        <posy>row-12-begin</posy>
                         <control type="textbox">
                             <posx>0</posx>
                             <posy>0</posy>
                             <width>15-col</width>
-                            <height>15-row</height>
+                            <height>5-row</height>
                             <font>small</font>
                             <textcolor>selected</textcolor>
                             <selectedcolor>selected</selectedcolor>
                             <shadowcolor>-</shadowcolor>
                             <autoscroll delay="0" time="500" repeat="1000">True</autoscroll>
-                            <label>
-$INFO[Pvr.BackendDiskSpace]
-Label = $INFO[ListItem.Label]
-Label2 = $INFO[ListItem.Label2]
-Title = $INFO[ListItem.Title]
-OriginalTitle = $INFO[ListItem.OriginalTitle]
-SortLetter = $INFO[ListItem.SortLetter]
-Trailer = $INFO[ListItem.Trailer]
-Writer = $INFO[ListItem.Writer]
-Tagline = $INFO[ListItem.Tagline]
-PlotOutline = $INFO[ListItem.PlotOutline]
-Plot = $INFO[ListItem.Plot]
-IMDBNumber = $INFO[ListItem.IMDBNumber]
-EpisodeName = $INFO[ListItem.EpisodeName]
-PercentPlayed = $INFO[ListItem.PercentPlayed]
-LastPlayed = $INFO[ListItem.LastPlayed]
-PlayCount = $INFO[ListItem.PlayCount]
-StartTime = $INFO[ListItem.StartTime]
-EndTime = $INFO[ListItem.EndTime]
-StartDate = $INFO[ListItem.StartDate]
-Date = $INFO[ListItem.Date]
-ChannelNumber = $INFO[ListItem.ChannelNumber]
-ChannelName = $INFO[ListItem.ChannelName]
-VideoCodec = $INFO[ListItem.VideoCodec]
-VideoResolution = $INFO[ListItem.VideoResolution]
-VideoAspect = $INFO[ListItem.VideoAspect]
-AudioCodec = $INFO[ListItem.AudioCodec]
-AudioChannels = $INFO[ListItem.AudioChannels]
-AudioLanguage = $INFO[ListItem.AudioLanguage]
-SubtitleLanguage = $INFO[ListItem.SubtitleLanguage]
-StartTime = $INFO[ListItem.StartTime]
-EndTime = $INFO[ListItem.EndTime]
-StartDate = $INFO[ListItem.StartDate]
-EndDate = $INFO[ListItem.EndDate]
-NextTitle = $INFO[ListItem.NextTitle]
-NextGenre = $INFO[ListItem.NextGenre]
-NextPlot = $INFO[ListItem.NextPlot]
-NextPlotOutline = $INFO[ListItem.NextPlotOutline]
-NextStartTime = $INFO[ListItem.NextStartTime]
-NextEndTime = $INFO[ListItem.NextEndTime]
-NextStartDate = $INFO[ListItem.NextStartDate]
-NextEndDate = $INFO[ListItem.NextEndDate]
-ChannelName = $INFO[ListItem.ChannelName]
-ChannelNumber = $INFO[ListItem.ChannelNumber]
-ChannelGroup = $INFO[ListItem.ChannelGroup]
-SubChannelNumber = $INFO[ListItem.SubChannelNumber]
-ChannelNumberLabel = $INFO[ListItem.ChannelNumberLabel]
-Progress = $INFO[ListItem.Progress]
-StereoscopicMode = $INFO[ListItem.StereoscopicMode]
-IsSelected = $INFO[ListItem.IsSelected]
-IsPlaying = $INFO[ListItem.IsPlaying]
-IsResumable = $INFO[ListItem.IsResumable]
-IsFolder = $INFO[ListItem.IsFolder]
-IsCollection = $INFO[ListItem.IsCollection]
-IsRecording = $INFO[ListItem.IsRecording]
-Comment = $INFO[ListItem.Comment]
-TrackNumber = $INFO[ListItem.TrackNumber]
-Artist = $INFO[ListItem.Artist]
-AlbumArtist = $INFO[ListItem.AlbumArtist]
-Album = $INFO[ListItem.Album]
-DiscNumber = $INFO[ListItem.DiscNumber]
-Year = $INFO[ListItem.Year]
-Premiered = $INFO[ListItem.Premiered]
-Genre = $INFO[ListItem.Genre]
-Director = $INFO[ListItem.Director]
-Country = $INFO[ListItem.Country]
-Episode = $INFO[ListItem.Episode]
-Season = $INFO[ListItem.Season]
-TVShowTitle = $INFO[ListItem.TVShowTitle]
-Property(TotalSeasons) = $INFO[ListItem.Property(TotalSeasons)]
-Property(TotalEpisodes) = $INFO[ListItem.Property(TotalEpisodes)]
-Property(WatchedEpisodes) = $INFO[ListItem.Property(WatchedEpisodes)]
-Property(UnWatchedEpisodes) = $INFO[ListItem.Property(UnWatchedEpisodes)]
-Property(NumEpisodes) = $INFO[ListItem.Property(NumEpisodes)]
-FileName = $INFO[ListItem.FileName]
-Path = $INFO[ListItem.Path]
-FolderName = $INFO[ListItem.FolderName]
-FolderPath = $INFO[ListItem.FolderPath]
-FileNameAndPath = $INFO[ListItem.FileNameAndPath]
-FileExtension = $INFO[ListItem.FileExtension]
-Date = $INFO[ListItem.Date]
-DateAdded = $INFO[ListItem.DateAdded]
-Size = $INFO[ListItem.Size]
-Rating = $INFO[ListItem.Rating]
-Votes = $INFO[ListItem.Votes]
-RatingAndVotes = $INFO[ListItem.RatingAndVotes]
-Mpaa = $INFO[ListItem.Mpaa]
-ProgramCount = $INFO[ListItem.ProgramCount]
-Duration = $INFO[ListItem.Duration]
-DBTYPE = $INFO[ListItem.DBTYPE]
-DBID = $INFO[ListItem.DBID]
-Cast = $INFO[ListItem.Cast]
-CastAndRole = $INFO[ListItem.CastAndRole]
-Studio = $INFO[ListItem.Studio]
-Top250 = $INFO[ListItem.Top250]</label>
+                            <label>$INFO[Container.FolderPath] | $INFO[Skin.String(pvrPrevDir)]</label>
                         </control>
-                    </control>
+                    </control>   --> 
                 </control>
-                <!--page scrollbar-->
-                <control type="group" id="9400">
-                    <visible>Control.IsVisible(60)</visible>
-                    <animation effect="fade" start="100" end="0" time="100" condition="!controlgroup(9400).hasfocus">conditional</animation>
-                    <control type="scrollbar" id="60">
-                        <posx>108r</posx>
-                        <posy>276</posy>
-                        <height>672</height>
-                        <onleft>9999</onleft>
-                    </control>
-                </control>
+                
                 <!--Sort / misc labels (footer)-->
                 <control type="group">
-                    <posx>col-4-begin</posx>
-                    <posy>row-18-begin</posy>
-                    <include>mediaListFooter</include>
+                    <posx>col-3-begin</posx>
+                    <posy>row-17-begin</posy>
+                    <control type="label">
+                        <width>40</width>
+                        <font>symbol</font>
+                        <textcolor>selected</textcolor>
+                        <label></label>
+                    </control>
+                    <control type="label">
+                        <posx>30</posx>
+                        <width>2-col</width>
+                        <font>buttonTitle</font>
+                        <textcolor>selected</textcolor>
+                        <label>$LOCALIZE[31038] $INFO[container.currentpage] / $INFO[container.numpages]</label>
+                    </control>
                 </control>
             </control>
         </control>
@@ -221,3 +556,116 @@ Top250 = $INFO[ListItem.Top250]</label>
         </control>
     </controls>
 </window>
+
+<!-- debug label
+<control type="group">
+                        <posx>col-8-begin</posx>
+                        <posy>-12</posy>
+                        <control type="textbox">
+                            <posx>0</posx>
+                            <posy>0</posy>
+                            <width>15-col</width>
+                            <height>15-row</height>
+                            <font>small</font>
+                            <textcolor>selected</textcolor>
+                            <selectedcolor>selected</selectedcolor>
+                            <shadowcolor>-</shadowcolor>
+                            <autoscroll delay="0" time="500" repeat="1000">True</autoscroll>
+                            <label>
+Label = $INFO[Container(9900).ListItem.Label]
+Art = $INFO[Container(9900).ListItem(0).Art(fanart)]
+Label2 = $INFO[Container(9900).ListItem(0).Label2]
+Title = $INFO[Container(9900).ListItem(0).Title]
+OriginalTitle = $INFO[Container(9900).ListItem(0).OriginalTitle]
+SortLetter = $INFO[Container(9900).ListItem(0).SortLetter]
+Trailer = $INFO[Container(9900).ListItem(0).Trailer]
+Writer = $INFO[Container(9900).ListItem(0).Writer]
+Tagline = $INFO[Container(9900).ListItem(0).Tagline]
+PlotOutline = $INFO[Container(9900).ListItem(0).PlotOutline]
+Plot = $INFO[Container(9900).ListItem(0).Plot]
+IMDBNumber = $INFO[Container(9900).ListItem(0).IMDBNumber]
+EpisodeName = $INFO[Container(9900).ListItem(0).EpisodeName]
+PercentPlayed = $INFO[Container(9900).ListItem(0).PercentPlayed]
+LastPlayed = $INFO[Container(9900).ListItem(0).LastPlayed]
+PlayCount = $INFO[Container(9900).ListItem(0).PlayCount]
+StartTime = $INFO[Container(9900).ListItem(0).StartTime]
+EndTime = $INFO[Container(9900).ListItem(0).EndTime]
+StartDate = $INFO[Container(9900).ListItem(0).StartDate]
+Date = $INFO[Container(9900).ListItem(0).Date]
+ChannelNumber = $INFO[Container(9900).ListItem(0).ChannelNumber]
+ChannelName = $INFO[Container(9900).ListItem(0).ChannelName]
+VideoCodec = $INFO[Container(9900).ListItem(0).VideoCodec]
+VideoResolution = $INFO[Container(9900).ListItem(0).VideoResolution]
+VideoAspect = $INFO[Container(9900).ListItem(0).VideoAspect]
+AudioCodec = $INFO[Container(9900).ListItem(0).AudioCodec]
+AudioChannels = $INFO[Container(9900).ListItem(0).AudioChannels]
+AudioLanguage = $INFO[Container(9900).ListItem(0).AudioLanguage]
+SubtitleLanguage = $INFO[Container(9900).ListItem(0).SubtitleLanguage]
+StartTime = $INFO[Container(9900).ListItem(0).StartTime]
+EndTime = $INFO[Container(9900).ListItem(0).EndTime]
+StartDate = $INFO[Container(9900).ListItem(0).StartDate]
+EndDate = $INFO[Container(9900).ListItem(0).EndDate]
+NextTitle = $INFO[Container(9900).ListItem(0).NextTitle]
+NextGenre = $INFO[Container(9900).ListItem(0).NextGenre]
+NextPlot = $INFO[Container(9900).ListItem(0).NextPlot]
+NextPlotOutline = $INFO[Container(9900).ListItem(0).NextPlotOutline]
+NextStartTime = $INFO[Container(9900).ListItem(0).NextStartTime]
+NextEndTime = $INFO[Container(9900).ListItem(0).NextEndTime]
+NextStartDate = $INFO[Container(9900).ListItem(0).NextStartDate]
+NextEndDate = $INFO[Container(9900).ListItem(0).NextEndDate]
+ChannelName = $INFO[Container(9900).ListItem(0).ChannelName]
+ChannelNumber = $INFO[Container(9900).ListItem(0).ChannelNumber]
+ChannelGroup = $INFO[Container(9900).ListItem(0).ChannelGroup]
+SubChannelNumber = $INFO[Container(9900).ListItem(0).SubChannelNumber]
+ChannelNumberLabel = $INFO[Container(9900).ListItem(0).ChannelNumberLabel]
+Progress = $INFO[Container(9900).ListItem(0).Progress]
+StereoscopicMode = $INFO[Container(9900).ListItem(0).StereoscopicMode]
+IsSelected = $INFO[Container(9900).ListItem(0).IsSelected]
+IsPlaying = $INFO[Container(9900).ListItem(0).IsPlaying]
+IsResumable = $INFO[Container(9900).ListItem(0).IsResumable]
+IsFolder = $INFO[Container(9900).ListItem(0).IsFolder]
+IsCollection = $INFO[Container(9900).ListItem(0).IsCollection]
+IsRecording = $INFO[Container(9900).ListItem(0).IsRecording]
+Comment = $INFO[Container(9900).ListItem(0).Comment]
+TrackNumber = $INFO[Container(9900).ListItem(0).TrackNumber]
+Artist = $INFO[Container(9900).ListItem(0).Artist]
+AlbumArtist = $INFO[Container(9900).ListItem(0).AlbumArtist]
+Album = $INFO[Container(9900).ListItem(0).Album]
+DiscNumber = $INFO[Container(9900).ListItem(0).DiscNumber]
+Year = $INFO[Container(9900).ListItem(0).Year]
+Premiered = $INFO[Container(9900).ListItem(0).Premiered]
+Genre = $INFO[Container(9900).ListItem(0).Genre]
+Director = $INFO[Container(9900).ListItem(0).Director]
+Country = $INFO[Container(9900).ListItem(0).Country]
+Episode = $INFO[Container(9900).ListItem(0).Episode]
+Season = $INFO[Container(9900).ListItem(0).Season]
+TVShowTitle = $INFO[Container(9900).ListItem(0).TVShowTitle]
+Property(TotalSeasons) = $INFO[Container(9900).ListItem(0).Property(TotalSeasons)]
+Property(TotalEpisodes) = $INFO[Container(9900).ListItem(0).Property(TotalEpisodes)]
+Property(WatchedEpisodes) = $INFO[Container(9900).ListItem(0).Property(WatchedEpisodes)]
+Property(UnWatchedEpisodes) = $INFO[Container(9900).ListItem(0).Property(UnWatchedEpisodes)]
+Property(NumEpisodes) = $INFO[Container(9900).ListItem(0).Property(NumEpisodes)]
+FileName = $INFO[Container(9900).ListItem(0).FileName]
+Path = $INFO[Container(9900).ListItem(0).Path]
+FolderName = $INFO[Container(9900).ListItem(0).FolderName]
+FolderPath = $INFO[Container(9900).ListItem(0).FolderPath]
+FileNameAndPath = $INFO[Container(9900).ListItem(0).FileNameAndPath]
+FileExtension = $INFO[Container(9900).ListItem(0).FileExtension]
+Date = $INFO[Container(9900).ListItem(0).Date]
+DateAdded = $INFO[Container(9900).ListItem(0).DateAdded]
+Size = $INFO[Container(9900).ListItem(0).Size]
+Rating = $INFO[Container(9900).ListItem(0).Rating]
+Votes = $INFO[Container(9900).ListItem(0).Votes]
+RatingAndVotes = $INFO[Container(9900).ListItem(0).RatingAndVotes]
+Mpaa = $INFO[Container(9900).ListItem(0).Mpaa]
+ProgramCount = $INFO[Container(9900).ListItem(0).ProgramCount]
+Duration = $INFO[Container(9900).ListItem(0).Duration]
+DBTYPE = $INFO[Container(9900).ListItem(0).DBTYPE]
+DBID = $INFO[Container(9900).ListItem(0).DBID]
+Cast = $INFO[Container(9900).ListItem(0).Cast]
+CastAndRole = $INFO[Container(9900).ListItem(0).CastAndRole]
+Studio = $INFO[Container(9900).ListItem(0).Studio]
+Top250 = $INFO[Container(9900).ListItem(0).Top250]</label>
+                        </control>
+                    </control>
+--/>

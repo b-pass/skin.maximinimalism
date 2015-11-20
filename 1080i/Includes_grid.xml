@@ -10,6 +10,7 @@
         <height>fullscreenHeight</height>
     </include>
     <!--Grid (24 cols @72px. Margins: 26px / 96px, row-height: 57 (1.6 em))-->
+    <constant name="col-0-begin">24</constant>
     <constant name="col-1-begin">96</constant>
     <constant name="col-2-begin">168</constant>
     <constant name="col-3-begin">240</constant>
@@ -34,6 +35,8 @@
     <constant name="col-22-begin">1608</constant>
     <constant name="col-23-begin">1680</constant>
     <constant name="col-24-begin">1752</constant>
+    <constant name="col-25-begin">1824</constant>
+    <constant name="col-26-begin">1896</constant>
     <constant name="1-col">72</constant>
     <constant name="2-col">144</constant>
     <constant name="3-col">216</constant>
@@ -58,6 +61,8 @@
     <constant name="22-col">1584</constant>
     <constant name="23-col">1656</constant>
     <constant name="24-col">1728</constant>
+    <constant name="25-col">1800</constant>
+    <constant name="26-col">1872</constant>
     <constant name="1-col-gutter">48</constant>
     <constant name="2-col-gutter">120</constant>
     <constant name="3-col-gutter">192</constant>
@@ -82,6 +87,8 @@
     <constant name="22-col-gutter">1560</constant>
     <constant name="23-col-gutter">1632</constant>
     <constant name="24-col-gutter">1704</constant>
+    <constant name="25-col-gutter">1776</constant>
+    <constant name="26-col-gutter">1848</constant>
     <constant name="row-1-begin">38</constant>
     <constant name="row-2-begin">95</constant>
     <constant name="row-3-begin">152</constant>

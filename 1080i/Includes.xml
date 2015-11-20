@@ -6,7 +6,6 @@
     <include file="Includes_animations.xml"/>
     <include file="Includes_animations.xml"/>
     <include file="Includes_menuItems.xml"/>
-    <include file="Includes_pvrRecordings.xml"/>
     <include file="Includes_recentItems.xml"/>
     <include file="Includes_sidebarItems.xml"/>
     <include file="ViewsVideos.xml"/>
@@ -271,8 +270,8 @@
     <include name="recentItemsHalfHeight"><height>6-row</height><orientation>horizontal</orientation></include>
     <!--debugging-->
     <include name="DialogID">
-        <posx>15</posx>
-        <posy>15</posy>
+        <posx>1</posx>
+        <posy>1</posy>
         <width>fullscreenwidth</width>
         <height>1-row</height>
         <font>small</font>
