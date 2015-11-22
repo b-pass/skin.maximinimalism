@@ -8,67 +8,70 @@
             <animation type="Conditional" condition="Window.IsActive(osdvideosettings) | Window.IsActive(osdaudiosettings) | window.isactive(PVROSDChannels)">
                 <effect type="fade" start="100" end="0" time="200" tween="sine" easing="in"/>
             </animation>
+            <control type="group">
+                <posx>col-0-begin</posx>
+                <posy>row-1-begin</posy>
+                <include>dateTime</include>
+                <!--include>menuItems</include-->
+            </control>
             <!--title info-->
             <control type="group">
-                <posx>col-1-begin</posx>
-                <posy>882</posy>
+                <posx>410</posx>
+                <posy>14-row</posy>
+                <width>1100</width>
+                <height>4-row</height>
                 <!--overlay-->
                 <control type="image">
-                    <posx>-96</posx>
-                    <posy>6</posy>
-                    <width>fullscreenWidth</width>
-                    <height>134</height>
                     <texture>colors/black.png</texture>
                     <colordiffuse>ccffffff</colordiffuse>
                     <aspectratio>stretch</aspectratio>
                 </control>
                 <!--content description-->
                 <control type="label" id="20">
-                    <posx>0</posx>
+                    <posx>10</posx>
                     <posy>0</posy>
-                    <width>24-col</width>
+                    <width>1080</width>
                     <font>smallStrong</font>
                     <textcolor>selected</textcolor>
                     <label fallback="31136">$INFO[VideoPlayer.ChannelNumber,,]$INFO[VideoPlayer.ChannelName,. ,]$INFO[Videoplayer.tvshowTitle]$INFO[Videoplayer.season, • $LOCALIZE[31011] ]$INFO[Videoplayer.episode, • $LOCALIZE[31040] ]</label>
                     <scroll>false</scroll>
                 </control>
                 <control type="label">
-                    <posx>0</posx>
+                    <posx>10</posx>
                     <posy>40</posy>
-                    <width>24-col</width>
-                    <font>largeTitle</font>
+                    <width>1080</width>
+                    <font>largeStrong</font>
                     <textcolor>selected</textcolor>
-                    <label>[UPPERCASE]$INFO[videoplayer.Title][/UPPERCASE]</label>
+                    <label>$INFO[videoplayer.Title]$INFO[videoplayer.EpisodeName, - ,]</label>
                     <shadowcolor>-</shadowcolor>
                     <include condition="Skin.HasSetting(lowPowerMode)">scrollSuppressionActive</include>
                     <include condition="!Skin.HasSetting(lowPowerMode)">scrollSuppressionInactive</include>
                 </control>
-                <control type="label">
-                    <posx>0</posx>
-                    <posy>98</posy>
-                    <width>24-col</width>
-                    <height>30</height>
+                <control type="textbox">
+                    <posx>10</posx>
+                    <posy>110</posy>
+                    <width>1080</width>
+                    <height>110</height>
                     <font>small</font>
                     <textcolor>selected</textcolor>
                     <label fallback="31009">$INFO[Videoplayer.plot]</label>
-                    <include condition="Skin.HasSetting(lowPowerMode)">scrollSuppressionActive</include>
-                    <include condition="!Skin.HasSetting(lowPowerMode)">scrollSuppressionInactive</include>
-                    <scrollspeed>60</scrollspeed>
+                    <autoscroll delay="3000" time="1000" repeat="3000">True</autoscroll>
                 </control>
                 <control type="label">
-                    <posx>24-col</posx>
+                    <posx>1090</posx>
                     <posy>0</posy>
-                    <width>8-col</width>
+                    <width>250</width>
                     <font>smallStrong</font>
-                    <align>right</align>
                     <textcolor>selected</textcolor>
-                    <label>$INFO[system.time] • $INFO[System.Date(mmm d)] • $LOCALIZE[180] $INFO[Videoplayer.time] / $INFO[Videoplayer.duration]</label>
+                    <label>$INFO[Videoplayer.time] / $INFO[Videoplayer.duration]</label>
+                    <align>right</align>
                     <scroll>false</scroll>
                     <shadowcolor>-</shadowcolor>
                 </control>
             </control>
             <!--dialog controls-->
             <control type="group">
+                <visible>Skin.HasSetting(playercontrols)</visible>
                 <posx>0</posx>
                 <posy>996</posy>
                 <control type="image">
@@ -352,6 +355,17 @@
                         </item>
                     </content>
                 </control>
+            </control>
+            <control type="button">
+                <posx>1850</posx>
+                <posy>1030</posy>
+                <width>50</width>
+                <height>50</height>
+                <label></label>
+                <font>symbolLarge</font>
+                <textcolor>unselected</textcolor>
+                <onclick>Skin.ToggleSetting(playercontrols)</onclick>                          
+                <texture>colors/black.png</texture>
             </control>
         </control>
         <!--debugging-->

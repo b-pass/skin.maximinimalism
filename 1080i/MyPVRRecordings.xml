@@ -66,7 +66,7 @@
                         <width>6-col</width>
                         <height>13-row</height>
                         <onright>9900</onright>
-                        <content sortby="label" sortorder="ascending" target="noop">$INFO[Container(50).ListItem.FolderPath]</content>
+                        <content sortby="label" sortorder="ascending" target="noop">$INFO[Container(50).FolderPath]</content>
                         <itemlayout width="8-col" height="1-row">
                             <control type="image">
                                 <posx>0</posx>
@@ -160,7 +160,17 @@
                                 <font>itemTitle</font>
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>-</shadowcolor>
-                                <label>$INFO[ListItem.Label]</label>
+                                <label>$INFO[ListItem.EpisodeName]</label>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <visible>IsEmpty(ListItem.EpisodeName)</visible>
+                                <label>($INFO[ListItem.Label])</label>
                             </control>
                             <control type="label">
                                 <visible>!IsEmpty(ListItem.PlayCount) + !ListItem.IsResumable</visible>
@@ -170,7 +180,7 @@
                                 <font>symbolLarge</font>
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>-</shadowcolor>
-                                <label></label>
+                                <label>✓</label>
                             </control>
                             <control type="label">
                                 <visible>ListItem.IsResumable</visible>
@@ -210,7 +220,17 @@
                                 <font>itemTitle</font>
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>-</shadowcolor>
-                                <label>$INFO[ListItem.Label]</label>
+                                <label>$INFO[ListItem.EpisodeName]</label>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <visible>IsEmpty(ListItem.EpisodeName)</visible>
+                                <label>($INFO[ListItem.Label])</label>
                             </control>
                             <control type="label">
                                 <visible>!IsEmpty(ListItem.PlayCount) + !ListItem.IsResumable</visible>
@@ -220,7 +240,7 @@
                                 <font>symbolLarge</font>
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>-</shadowcolor>
-                                <label></label>
+                                <label>✓</label>
                             </control>
                             <control type="label">
                                 <visible>ListItem.IsResumable</visible>
@@ -260,7 +280,17 @@
                                 <font>itemTitle</font>
                                 <textcolor>black</textcolor>
                                 <shadowcolor>-</shadowcolor>
-                                <label>$INFO[ListItem.Label]</label>
+                                <label>$INFO[ListItem.EpisodeName]</label>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>black</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <visible>IsEmpty(ListItem.EpisodeName)</visible>
+                                <label>($INFO[ListItem.Label])</label>
                             </control>
                             <control type="label">
                                 <visible>!IsEmpty(ListItem.PlayCount) + !ListItem.IsResumable</visible>
@@ -401,24 +431,47 @@
                             </control>
                             <control type="label">
                                 <posx>5-col</posx>
-                                <posy>0</posy>
+                                <posy>1-row</posy>
                                 <width>13-col</width>
                                 <height>1-row</height>
-                                <font>medium</font>
+                                <font>mediumStrong</font>
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>black</shadowcolor>
                                 <!--scroll>true</scroll-->
-                                <label>$INFO[Container(9900).ListItem.Label]</label>
+                                <label>$INFO[Container(9900).ListItem.EpisodeName]</label>
                             </control>
                             <control type="label">
                                 <posx>5-col</posx>
                                 <posy>1-row</posy>
                                 <width>13-col</width>
-                                <height>2-row</height>
+                                <height>1-row</height>
+                                <font>mediumStrong</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <!--scroll>true</scroll-->
+                                <visible>IsEmpty(Container(9900).ListItem.EpisodeName)</visible>
+                                <label>$INFO[Container(9900).ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <height>1-row</height>
+                                <font>regularStrong</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <visible>!IsEmpty(Container(9900).ListItem.EpisodeName)</visible>
+                                <label>$INFO[Container(9900).ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>2-row</posy>
+                                <width>13-col</width>
+                                <height>1-row</height>
                                 <font>small</font>
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>black</shadowcolor>
-                                <label>$INFO[Container(9900).ListItem.ChannelName][CR]$INFO[Container(9900).ListItem.StartDate] $INFO[Container(9900).ListItem.StartTime]</label>
+                                <label>$INFO[Container(9900).ListItem.StartDate] at $INFO[Container(9900).ListItem.StartTime] on $INFO[Container(9900).ListItem.ChannelName]</label>
                             </control>
                             <control type="textbox">
                                 <posx>5-col</posx>
@@ -429,7 +482,7 @@
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>-</shadowcolor>
                                 <autoscroll delay="4000" time="1500" repeat="3000">True</autoscroll>
-                                <label>"$INFO[Container(9900).ListItem.Label]" -- $INFO[Container(9900).ListItem.Plot]</label>
+                                <label>$INFO[Container(9900).ListItem.Plot]</label>
                             </control>
                         </control>
                     </control>
@@ -479,3 +532,115 @@
         </control>
     </controls>
 </window>
+<!-- debug label
+<control type="group">
+                        <posx>col-8-begin</posx>
+                        <posy>-12</posy>
+                        <control type="textbox">
+                            <posx>0</posx>
+                            <posy>0</posy>
+                            <width>15-col</width>
+                            <height>15-row</height>
+                            <font>small</font>
+                            <textcolor>selected</textcolor>
+                            <selectedcolor>selected</selectedcolor>
+                            <shadowcolor>-</shadowcolor>
+                            <autoscroll delay="0" time="500" repeat="1000">True</autoscroll>
+                            <label>
+Label = $INFO[Container(9900).ListItem.Label]
+Art = $INFO[Container(9900).ListItem(0).Art(fanart)]
+Label2 = $INFO[Container(9900).ListItem(0).Label2]
+Title = $INFO[Container(9900).ListItem(0).Title]
+OriginalTitle = $INFO[Container(9900).ListItem(0).OriginalTitle]
+SortLetter = $INFO[Container(9900).ListItem(0).SortLetter]
+Trailer = $INFO[Container(9900).ListItem(0).Trailer]
+Writer = $INFO[Container(9900).ListItem(0).Writer]
+Tagline = $INFO[Container(9900).ListItem(0).Tagline]
+PlotOutline = $INFO[Container(9900).ListItem(0).PlotOutline]
+Plot = $INFO[Container(9900).ListItem(0).Plot]
+IMDBNumber = $INFO[Container(9900).ListItem(0).IMDBNumber]
+EpisodeName = $INFO[Container(9900).ListItem(0).EpisodeName]
+PercentPlayed = $INFO[Container(9900).ListItem(0).PercentPlayed]
+LastPlayed = $INFO[Container(9900).ListItem(0).LastPlayed]
+PlayCount = $INFO[Container(9900).ListItem(0).PlayCount]
+StartTime = $INFO[Container(9900).ListItem(0).StartTime]
+EndTime = $INFO[Container(9900).ListItem(0).EndTime]
+StartDate = $INFO[Container(9900).ListItem(0).StartDate]
+Date = $INFO[Container(9900).ListItem(0).Date]
+ChannelNumber = $INFO[Container(9900).ListItem(0).ChannelNumber]
+ChannelName = $INFO[Container(9900).ListItem(0).ChannelName]
+VideoCodec = $INFO[Container(9900).ListItem(0).VideoCodec]
+VideoResolution = $INFO[Container(9900).ListItem(0).VideoResolution]
+VideoAspect = $INFO[Container(9900).ListItem(0).VideoAspect]
+AudioCodec = $INFO[Container(9900).ListItem(0).AudioCodec]
+AudioChannels = $INFO[Container(9900).ListItem(0).AudioChannels]
+AudioLanguage = $INFO[Container(9900).ListItem(0).AudioLanguage]
+SubtitleLanguage = $INFO[Container(9900).ListItem(0).SubtitleLanguage]
+StartTime = $INFO[Container(9900).ListItem(0).StartTime]
+EndTime = $INFO[Container(9900).ListItem(0).EndTime]
+StartDate = $INFO[Container(9900).ListItem(0).StartDate]
+EndDate = $INFO[Container(9900).ListItem(0).EndDate]
+NextTitle = $INFO[Container(9900).ListItem(0).NextTitle]
+NextGenre = $INFO[Container(9900).ListItem(0).NextGenre]
+NextPlot = $INFO[Container(9900).ListItem(0).NextPlot]
+NextPlotOutline = $INFO[Container(9900).ListItem(0).NextPlotOutline]
+NextStartTime = $INFO[Container(9900).ListItem(0).NextStartTime]
+NextEndTime = $INFO[Container(9900).ListItem(0).NextEndTime]
+NextStartDate = $INFO[Container(9900).ListItem(0).NextStartDate]
+NextEndDate = $INFO[Container(9900).ListItem(0).NextEndDate]
+ChannelName = $INFO[Container(9900).ListItem(0).ChannelName]
+ChannelNumber = $INFO[Container(9900).ListItem(0).ChannelNumber]
+ChannelGroup = $INFO[Container(9900).ListItem(0).ChannelGroup]
+SubChannelNumber = $INFO[Container(9900).ListItem(0).SubChannelNumber]
+ChannelNumberLabel = $INFO[Container(9900).ListItem(0).ChannelNumberLabel]
+Progress = $INFO[Container(9900).ListItem(0).Progress]
+StereoscopicMode = $INFO[Container(9900).ListItem(0).StereoscopicMode]
+IsSelected = $INFO[Container(9900).ListItem(0).IsSelected]
+IsPlaying = $INFO[Container(9900).ListItem(0).IsPlaying]
+IsResumable = $INFO[Container(9900).ListItem(0).IsResumable]
+IsFolder = $INFO[Container(9900).ListItem(0).IsFolder]
+IsCollection = $INFO[Container(9900).ListItem(0).IsCollection]
+IsRecording = $INFO[Container(9900).ListItem(0).IsRecording]
+Comment = $INFO[Container(9900).ListItem(0).Comment]
+TrackNumber = $INFO[Container(9900).ListItem(0).TrackNumber]
+Artist = $INFO[Container(9900).ListItem(0).Artist]
+AlbumArtist = $INFO[Container(9900).ListItem(0).AlbumArtist]
+Album = $INFO[Container(9900).ListItem(0).Album]
+DiscNumber = $INFO[Container(9900).ListItem(0).DiscNumber]
+Year = $INFO[Container(9900).ListItem(0).Year]
+Premiered = $INFO[Container(9900).ListItem(0).Premiered]
+Genre = $INFO[Container(9900).ListItem(0).Genre]
+Director = $INFO[Container(9900).ListItem(0).Director]
+Country = $INFO[Container(9900).ListItem(0).Country]
+Episode = $INFO[Container(9900).ListItem(0).Episode]
+Season = $INFO[Container(9900).ListItem(0).Season]
+TVShowTitle = $INFO[Container(9900).ListItem(0).TVShowTitle]
+Property(TotalSeasons) = $INFO[Container(9900).ListItem(0).Property(TotalSeasons)]
+Property(TotalEpisodes) = $INFO[Container(9900).ListItem(0).Property(TotalEpisodes)]
+Property(WatchedEpisodes) = $INFO[Container(9900).ListItem(0).Property(WatchedEpisodes)]
+Property(UnWatchedEpisodes) = $INFO[Container(9900).ListItem(0).Property(UnWatchedEpisodes)]
+Property(NumEpisodes) = $INFO[Container(9900).ListItem(0).Property(NumEpisodes)]
+FileName = $INFO[Container(9900).ListItem(0).FileName]
+Path = $INFO[Container(9900).ListItem(0).Path]
+FolderName = $INFO[Container(9900).ListItem(0).FolderName]
+FolderPath = $INFO[Container(9900).ListItem(0).FolderPath]
+FileNameAndPath = $INFO[Container(9900).ListItem(0).FileNameAndPath]
+FileExtension = $INFO[Container(9900).ListItem(0).FileExtension]
+Date = $INFO[Container(9900).ListItem(0).Date]
+DateAdded = $INFO[Container(9900).ListItem(0).DateAdded]
+Size = $INFO[Container(9900).ListItem(0).Size]
+Rating = $INFO[Container(9900).ListItem(0).Rating]
+Votes = $INFO[Container(9900).ListItem(0).Votes]
+RatingAndVotes = $INFO[Container(9900).ListItem(0).RatingAndVotes]
+Mpaa = $INFO[Container(9900).ListItem(0).Mpaa]
+ProgramCount = $INFO[Container(9900).ListItem(0).ProgramCount]
+Duration = $INFO[Container(9900).ListItem(0).Duration]
+DBTYPE = $INFO[Container(9900).ListItem(0).DBTYPE]
+DBID = $INFO[Container(9900).ListItem(0).DBID]
+Cast = $INFO[Container(9900).ListItem(0).Cast]
+CastAndRole = $INFO[Container(9900).ListItem(0).CastAndRole]
+Studio = $INFO[Container(9900).ListItem(0).Studio]
+Top250 = $INFO[Container(9900).ListItem(0).Top250]</label>
+                        </control>
+                    </control>
+--/>

@@ -6,7 +6,7 @@
     <controls>
         <control type="group">
             <posx>col-1-begin</posx>
-            <posy>row-9-begin</posy>
+            <posy>row-15-begin</posy>
             <!--animations-->
             <animation type="Windowopen">
                 <effect type="fade" start="0" end="100" delay="0" time="200"/>
@@ -73,16 +73,16 @@
                 <width>12-col</width>
                 <font>smallMedium</font>
                 <textcolor>selected</textcolor>
-                <label>[UPPERCASE]$INFO[VideoPlayer.TVShowTitle][/UPPERCASE]</label>
+                <label>$INFO[VideoPlayer.TVShowTitle]</label>
                 <shadowcolor>-</shadowcolor>
             </control>
             <control type="label">
                 <posx>3-col</posx>
                 <posy>31</posy>
                 <width>18-col</width>
-                <font>largeTitle</font>
+                <font>largeStrong</font>
                 <textcolor>selected</textcolor>
-                <label>$INFO[Player.Title]</label>
+                <label>$INFO[Player.Title]    $INFO[Player.EpisodeName]</label>
                 <shadowcolor>-</shadowcolor>
 
 
