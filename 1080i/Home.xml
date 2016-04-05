@@ -197,19 +197,13 @@
                         <label2></label2>
                         <label>TV Recordings</label>
                         <thumb>-</thumb>
-                        <onclick>ActivateWindow(tvrecordings,pvr://recordings/active/Default/)</onclick>
+                        <onclick>ActivateWindow(tvrecordings,pvr://recordings/active/Default/,return)</onclick>
                     </item>
                     <item>
                         <label2></label2>
                         <label>Live TV</label>
                         <thumb>-</thumb>
-                        <onclick>ActivateWindow(TVGuide)</onclick> <!-- short guide = TVChannels, full guide = TVGuide -->
-                    </item>
-                    <item>
-                        <label>Pandora Radio</label>
-                        <label2></label2>
-                        <thumb>-</thumb>
-                        <onclick>RunScript(script.audio.pandora,)</onclick>
+                        <onclick>ActivateWindow(TVGuide,,return)</onclick> <!-- short guide = TVChannels, full guide = TVGuide -->
                     </item>
                     <item>
                         <visible>!Skin.HasSetting(hideVideo)</visible>
@@ -220,6 +214,18 @@
                         <onclick condition="!Library.HasContent(Video)">Skin.SetString(showRecentVideoItems,false)</onclick>
                         <onclick condition="Library.HasContent(Video)">ActivateWindow(Videos,videodb://)</onclick>
                         <onclick condition="Library.HasContent(Video)">Skin.SetString(showRecentVideoItems,true)</onclick>
+                    </item>
+                    <item>
+                        <label>Video Add-ons</label>
+                        <label2></label2>
+                        <thumb>-</thumb>
+                        <onclick>ActivateWindow(Videos,Addons,return)</onclick>
+                    </item>
+                    <item>
+                        <label>Pandora Radio</label>
+                        <label2></label2>
+                        <thumb>-</thumb>
+                        <onclick>RunScript(script.audio.pandora,)</onclick>
                     </item>
                     <item>
                         <visible>!Skin.HasSetting(hideMusic)</visible>

@@ -66,6 +66,7 @@
                         <width>6-col</width>
                         <height>13-row</height>
                         <onright>9900</onright>
+                        <onclick>Control.SetFocus(9900,0)</onclick>
                         <content sortby="label" sortorder="ascending" target="noop">$INFO[Container(50).FolderPath]</content>
                         <itemlayout width="8-col" height="1-row">
                             <control type="image">
@@ -140,6 +141,8 @@
                         <width>18-col</width>
                         <height>8-row</height>
                         <onleft>9950</onleft>
+                        <!--onfocus condition="StringCompare(Container(50).FolderPath,pvr://recordings/active/)">ReplaceWindow(Home)</onfocus-->
+                        <onfocus condition="Container(9900).ListItem(0).IsFolder">ReplaceWindow(tvrecordings,$INFO[Container(9950).ListItem.FolderPath])</onfocus>
                         <pagecontrol>9901</pagecontrol>
                         <content sortby="date" sortorder="ascending">$INFO[Container(9950).ListItem.FolderPath]</content>
                         <itemlayout width="18-col" height="1-row">
