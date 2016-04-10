@@ -6,6 +6,7 @@
     <include file="Includes_animations.xml"/>
     <include file="Includes_animations.xml"/>
     <include file="Includes_menuItems.xml"/>
+    <include file="Includes_PvrRecList.xml"/>
     <include file="Includes_recentItems.xml"/>
     <include file="Includes_sidebarItems.xml"/>
     <include file="ViewsVideos.xml"/>

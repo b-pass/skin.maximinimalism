@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="PvrRecordingDetails">
+		<param name="ListId" />
+		<param name="ScrollId" />
+		<param name="SortOrder" default="ascending" />
+		<definition>
+					<control type="list" id="$PARAM[ListId]">
+                        <posx>col-6-begin</posx>
+                        <posy>-12</posy>
+                        <width>18-col</width>
+                        <height>8-row</height>
+                        <onleft>9950</onleft>
+                        <onfocus condition="Container($PARAM[ListId]).ListItem.IsFolder">ReplaceWindow(tvrecordings,$INFO[Container(9950).ListItem.FolderPath])</onfocus>
+                        <pagecontrol>$PARAM[ScrollId]</pagecontrol>
+                        <content sortby="date" sortorder="$PARAM[SortOrder]">$INFO[Container(9950).ListItem.FolderPath]</content>
+                        <itemlayout width="18-col" height="1-row">
+                            <control type="image">
+                                <posx>0</posx>
+                                <posy>2</posy>
+                                <width>18-col</width>
+                                <height>53</height>
+                                <aspectratio>stretch</aspectratio>
+                                <texture border="24,0,24,0">UIControls/listitemNF.png</texture>
+                                <bordersize>0</bordersize>
+                                <colordiffuse>99FFFFFF</colordiffuse>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+								<visible>IsEmpty(ListItem.EpisodeName)</visible>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+								<visible>!IsEmpty(ListItem.EpisodeName) + !StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
+                                <label>$INFO[ListItem.EpisodeName]</label>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+								<visible>!IsEmpty(ListItem.EpisodeName) + StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
+                                <label>$INFO[ListItem.Label] - $INFO[ListItem.EpisodeName]</label>
+                            </control>
+                            <control type="label">
+                                <visible>!IsEmpty(ListItem.PlayCount) + !ListItem.IsResumable</visible>
+                                <posx>13-col</posx>
+                                <posy>0</posy>
+                                <width>1-col</width>
+                                <font>symbolLarge</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>?</label>
+                            </control>
+                            <control type="label">
+                                <visible>ListItem.IsResumable</visible>
+                                <posx>13-col</posx>
+                                <posy>0</posy>
+                                <width>1-col</width>
+                                <font>symbolLarge</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>?</label>
+                            </control>
+                            <control type="label">
+                                <posx>14-col</posx>
+                                <posy>0</posy>
+                                <width>8-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Date]</label>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="18-col" height="1-row" condition="!Control.HasFocus($PARAM[ListId])">
+                            <control type="image">
+                                <posx>0</posx>
+                                <posy>2</posy>
+                                <width>18-col</width>
+                                <height>53</height>
+                                <aspectratio>stretch</aspectratio>
+                                <texture border="24,0,24,0">UIControls/listitemNF.png</texture>
+                                <bordersize>0</bordersize>
+                                <colordiffuse>99FFFFFF</colordiffuse>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+								<visible>IsEmpty(ListItem.EpisodeName)</visible>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+								<visible>!IsEmpty(ListItem.EpisodeName) + !StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
+                                <label>$INFO[ListItem.EpisodeName]</label>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+								<visible>!IsEmpty(ListItem.EpisodeName) + StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
+                                <label>$INFO[ListItem.Label] - $INFO[ListItem.EpisodeName]</label>
+                            </control>
+                            <control type="label">
+                                <visible>!IsEmpty(ListItem.PlayCount) + !ListItem.IsResumable</visible>
+                                <posx>13-col</posx>
+                                <posy>0</posy>
+                                <width>1-col</width>
+                                <font>symbolLarge</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>?</label>
+                            </control>
+                            <control type="label">
+                                <visible>ListItem.IsResumable</visible>
+                                <posx>13-col</posx>
+                                <posy>0</posy>
+                                <width>1-col</width>
+                                <font>symbolLarge</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>?</label>
+                            </control>
+                            <control type="label">
+                                <posx>14-col</posx>
+                                <posy>0</posy>
+                                <width>8-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Date]</label>
+                            </control>
+                        </focusedlayout>
+                        <focusedlayout width="18-col" height="1-row" condition="Control.HasFocus($PARAM[ListId])">
+                            <control type="image">
+                                <posx>0</posx>
+                                <posy>2</posy>
+                                <width>18-col</width>
+                                <height>53</height>
+                                <aspectratio>stretch</aspectratio>
+                                <texture border="24,0,24,0">UIControls/listitemFO.png</texture>
+                                <bordersize>0</bordersize>
+                                <colordiffuse>FFFFFFFF</colordiffuse>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>black</textcolor>
+                                <shadowcolor>-</shadowcolor>
+								<visible>IsEmpty(ListItem.EpisodeName)</visible>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>black</textcolor>
+                                <shadowcolor>-</shadowcolor>
+								<visible>!IsEmpty(ListItem.EpisodeName) + !StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
+                                <label>$INFO[ListItem.EpisodeName]</label>
+                            </control>
+                            <control type="label">
+                                <posx>20</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <font>itemTitle</font>
+                                <textcolor>black</textcolor>
+                                <shadowcolor>-</shadowcolor>
+								<visible>!IsEmpty(ListItem.EpisodeName) + StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
+                                <label>$INFO[ListItem.Label] - $INFO[ListItem.EpisodeName]</label>
+                            </control>
+                            <control type="label">
+                                <visible>!IsEmpty(ListItem.PlayCount) + !ListItem.IsResumable</visible>
+                                <posx>13-col</posx>
+                                <posy>0</posy>
+                                <width>1-col</width>
+                                <font>symbolLarge</font>
+                                <textcolor>black</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>?</label>
+                            </control>
+                            <control type="label">
+                                <visible>ListItem.IsResumable</visible>
+                                <posx>13-col</posx>
+                                <posy>0</posy>
+                                <width>1-col</width>
+                                <font>symbolLarge</font>
+                                <textcolor>black</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>?</label>
+                            </control>
+                            <control type="label">
+                                <posx>14-col</posx>
+                                <posy>0</posy>
+                                <width>8-col-gutter</width>
+                                <font>itemTitle</font>
+                                <textcolor>black</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <label>$INFO[ListItem.Date]</label>
+                            </control>
+                        </focusedlayout>
+                    </control>
+                    <control type="scrollbar" id="$PARAM[ScrollId]">
+                        <posx>25-col-gutter</posx>
+                        <posy>-10</posy>
+                        <height>8-row</height>
+                    </control>
+                    
+                    <control type="group">
+                        <posx>col-6-begin</posx>
+                        <posy>8-row</posy>
+                        <width>18-col</width>
+                        <height>6-row</height>
+                        
+                        <control type="image">
+                            <width>18-col</width>
+                            <height>6-row</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture>colors/black.png</texture>
+                            <colordiffuse>99FFFFFF</colordiffuse>
+                        </control>
+                        <control type="image">
+                            <posx>6</posx>
+                            <posy>6</posy>
+                            <height>330</height>
+                            <width>330</width>
+                            <aspectratio>stretch</aspectratio>
+                            <texture>colors/black.png</texture>
+                            <colordiffuse>99FFFFFF</colordiffuse>
+                        </control>
+                        <control type="group">
+                            <visible>!Control.HasFocus($PARAM[ListId]) + [StringCompare(Container(9950).ListItem.Label,"..") | StringCompare(Container(9950).ListItem.Label,"(Recent)")]</visible>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <height>1-row</height>
+                                <font>largeStrong</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <label>$INFO[Container(50).ListItem.Label]</label>
+                            </control>
+                        </control>
+                        <control type="group">
+                            <visible>!Control.HasFocus($PARAM[ListId]) + !StringCompare(Container(9950).ListItem.Label,"..") + !StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
+                            <control type="image">
+                                <posx>6</posx>
+                                <posy>6</posy>
+                                <height>330</height>
+                                <width>330</width>
+                                <align>left</align>
+                                <aspectratio>keep</aspectratio>
+                                <texture>$INFO[Container($PARAM[ListId]).ListItem.Art(icon)]</texture>
+                            </control>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <height>1-row</height>
+                                <font>largeStrong</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <label>$INFO[Container(9950).ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>1-row</posy>
+                                <width>10-row</width>
+                                <height>1-row</height>
+                                <font>small</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <label>$INFO[Container($PARAM[ListId]).ListItem.ChannelName]</label>
+                            </control>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>2-row</posy>
+                                <width>10-row</width>
+                                <height>1-row</height>
+                                <font>regular</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <visible>IntegerGreaterThan(Container($PARAM[ListId]).NumItems,1)</visible>
+                                <label>$INFO[Container($PARAM[ListId]).NumItems] episodes</label>
+                            </control>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>2-row</posy>
+                                <width>10-row</width>
+                                <height>1-row</height>
+                                <font>regular</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <visible>!IntegerGreaterThan(Container($PARAM[ListId]).NumItems,1) + IntegerGreaterThan(Container($PARAM[ListId]).NumItems,0)</visible>
+                                <label>One episode</label>
+                            </control>
+                        </control>
+                        <control type="group">
+                            <visible>Control.HasFocus($PARAM[ListId])</visible>
+                            <control type="image">
+                                <posx>6</posx>
+                                <posy>6</posy>
+                                <height>330</height>
+                                <width>330</width>
+                                <align>left</align>
+                                <aspectratio>keep</aspectratio>
+                                <texture>$INFO[Container($PARAM[ListId]).ListItem.Art(thumb)]</texture>
+                            </control>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>1-row</posy>
+                                <width>13-col</width>
+                                <height>1-row</height>
+                                <font>mediumStrong</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <!--scroll>true</scroll-->
+                                <label>$INFO[Container($PARAM[ListId]).ListItem.EpisodeName]</label>
+                            </control>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>1-row</posy>
+                                <width>13-col</width>
+                                <height>1-row</height>
+                                <font>mediumStrong</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <!--scroll>true</scroll-->
+                                <visible>IsEmpty(Container($PARAM[ListId]).ListItem.EpisodeName)</visible>
+                                <label>$INFO[Container($PARAM[ListId]).ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>0</posy>
+                                <width>13-col</width>
+                                <height>1-row</height>
+                                <font>regularStrong</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <visible>!IsEmpty(Container($PARAM[ListId]).ListItem.EpisodeName)</visible>
+                                <label>$INFO[Container($PARAM[ListId]).ListItem.Label]</label>
+                            </control>
+                            <control type="label">
+                                <posx>5-col</posx>
+                                <posy>2-row</posy>
+                                <width>13-col</width>
+                                <height>1-row</height>
+                                <font>small</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <label>$INFO[Container($PARAM[ListId]).ListItem.ChannelName]   |   $INFO[Container($PARAM[ListId]).ListItem.StartDate] at $INFO[Container($PARAM[ListId]).ListItem.StartTime]</label>
+                            </control>
+                            <control type="textbox">
+                                <posx>5-col</posx>
+                                <posy>3-row</posy>
+                                <width>12-col</width>
+                                <height>3-row</height>
+                                <font>regular</font>
+                                <textcolor>selected</textcolor>
+                                <shadowcolor>-</shadowcolor>
+                                <autoscroll delay="4000" time="1500" repeat="3000">True</autoscroll>
+                                <label>$INFO[Container($PARAM[ListId]).ListItem.Plot]</label>
+                            </control>
+                        </control>
+                    </control>
+		</definition>
+	</include>
+</includes>
