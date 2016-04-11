@@ -347,13 +347,13 @@
                             </control>
                             <control type="label">
                                 <posx>5-col</posx>
-                                <posy>1-row</posy>
+                                <posy>0</posy>
                                 <width>13-col</width>
                                 <height>1-row</height>
-                                <font>mediumStrong</font>
+                                <font>largeStrong</font>
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>black</shadowcolor>
-                                <!--scroll>true</scroll-->
+                                <scroll>true</scroll>
                                 <visible>IsEmpty(Container($PARAM[ListId]).ListItem.EpisodeName)</visible>
                                 <label>$INFO[Container($PARAM[ListId]).ListItem.Label]</label>
                             </control>
@@ -365,6 +365,7 @@
                                 <font>regularStrong</font>
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>black</shadowcolor>
+                                <scroll>true</scroll>
                                 <visible>!IsEmpty(Container($PARAM[ListId]).ListItem.EpisodeName)</visible>
                                 <label>$INFO[Container($PARAM[ListId]).ListItem.Label]</label>
                             </control>

@@ -2,8 +2,6 @@
 <window>
     <defaultcontrol always="true">10</defaultcontrol>
     <allowoverlay>yes</allowoverlay>
-    <onload>Skin.Reset(DebugInfo)</onload>
-    <onload>Skin.Reset(DebugGrid)</onload>
     <onload condition="!Skin.String(videoHomeItemsMoviesSource)">Skin.SetString(videoHomeItemsMoviesSource,recentmovies)</onload>
     <onload condition="!Skin.String(videoHomeItemsEpisodesSource)">Skin.SetString(videoHomeItemsEpisodesSource,recentepisodes)</onload>
     <onload condition="!Skin.String(musicHomeItemsSource)">Skin.SetString(musicHomeItemsSource,recentalbums)</onload>
@@ -12,12 +10,32 @@
         <posy>15</posy>
     </coordinates>
     <controls>
+        <include>globalBackground</include>
+        <include>loadingIndicator</include>
         <control type="button" id="10">
             <description>Startup Trigger</description>
-            <onfocus>ReplaceWindow($INFO[System.StartupWindow])</onfocus>
-            <texturenofocus>-</texturenofocus>
-            <texturefocus>-</texturefocus>
+			<onfocus condition="Skin.HasSetting(NoWaitForPVR) | Pvr.HasTVChannels">ReplaceWindow($INFO[System.StartupWindow])</onfocus>
+			<onfocus condition="!Pvr.HasTVChannels">AlarmClock(UpdateDelay,SetFocus(17),00:02,silent)</onfocus>
+			<visible allowhiddenfocus="true">false</visible>
         </control>
+		<control type="button" id="17"><!-- loop -->
+			<visible allowhiddenfocus="true">false</visible>
+			<onfocus>Control.SetFocus(10)</onfocus>
+		</control>
+		
+        <!--control type="label">
+			<visible>Control.HasFocus(10)</visible>
+            <label>StartUp! 10!</label>
+        </control>
+        <control type="label">
+			<visible>Control.HasFocus(17)</visible>
+            <label>StartUp! 17!</label>
+        </control>
+        <control type="label">
+			<visible>!Control.HasFocus(17) + !Control.HasFocus(10)</visible>
+            <label>StartUp! ??</label>
+        </control-->
+		
         <!--debugging-->
         <include>DebugGrid</include>
         <control type="label">

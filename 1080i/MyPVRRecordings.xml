@@ -66,7 +66,7 @@
                         <width>6-col</width>
                         <height>13-row</height>
                         <onright>9990</onright>
-                        <onclick>Control.SetFocus(9990,0)</onclick>
+                        <onclick>Control.SetFocus(9990)</onclick>
                         <content sortby="label" sortorder="ascending" target="noop">$INFO[Container(50).FolderPath]</content>
                         <itemlayout width="8-col" height="1-row">
                             <control type="image">
@@ -120,15 +120,15 @@
                                 <aspectratio>stretch</aspectratio>
                                 <texture border="24,0,24,0">UIControls/listitemFO.png</texture>
                                 <bordersize>0</bordersize>
-                                <colordiffuse>80808080</colordiffuse>
+                                <colordiffuse>C0C0C0C0</colordiffuse>
                             </control>
                             <control type="label">
                                 <posx>20</posx>
                                 <posy>0</posy>
                                 <width>6-col-gutter</width>
                                 <font>itemTitle</font>
-                                <textcolor>selected</textcolor>
-                                <selectedcolor>selected</selectedcolor>
+                                <textcolor>black</textcolor>
+                                <selectedcolor>black</selectedcolor>
                                 <shadowcolor>-</shadowcolor>
                                 <label>$INFO[ListItem.Label]</label>
                             </control>
@@ -136,7 +136,7 @@
                     </control>
                     
 					<control type="group" id="9990">
-						<control type="group" id="9991">
+						<control type="group">
 							<visible>!StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
 							<include name="PvrRecordingDetails">
 								<param name="ListId">9901</param>
@@ -144,7 +144,7 @@
 								<param name="SortOrder">ascending</param>
 							</include>
 						</control>
-						<control type="group" id="9992">
+						<control type="group">
 							<visible>StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
 							<include name="PvrRecordingDetails">
 								<param name="ListId">9903</param>
