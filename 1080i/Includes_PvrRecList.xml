@@ -382,7 +382,7 @@
                             <control type="textbox">
                                 <posx>5-col</posx>
                                 <posy>3-row</posy>
-                                <width>12-col</width>
+                                <width>13-col-gutter</width>
                                 <height>3-row</height>
                                 <font>regular</font>
                                 <textcolor>selected</textcolor>
