@@ -136,21 +136,23 @@
                     </control>
                     
 					<control type="group" id="9990">
-						<visible>!StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
-						<include name="PvrRecordingDetails">
-							<param name="ListId">9901</param>
-							<param name="ScrollId">9902</param>
-							<param name="SortOrder">ascending</param>
-						</include>
-                    </control>
-					<control type="group" id="9991">
-						<visible>StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
-						<include name="PvrRecordingDetails">
-							<param name="ListId">9903</param>
-							<param name="ScrollId">9904</param>
-							<param name="SortOrder">descending</param>
-						</include>
-                    </control>
+						<control type="group" id="9991">
+							<visible>!StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
+							<include name="PvrRecordingDetails">
+								<param name="ListId">9901</param>
+								<param name="ScrollId">9902</param>
+								<param name="SortOrder">ascending</param>
+							</include>
+						</control>
+						<control type="group" id="9992">
+							<visible>StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
+							<include name="PvrRecordingDetails">
+								<param name="ListId">9903</param>
+								<param name="ScrollId">9904</param>
+								<param name="SortOrder">descending</param>
+							</include>
+						</control>
+					</control>
                 </control>
                 
                 <!--Sort / misc labels (footer)-->
