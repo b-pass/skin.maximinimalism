@@ -4,6 +4,7 @@
     <allowoverlay>yes</allowoverlay>
     <onload condition="Skin.hassetting(stopVideoOnMenu) + !Player.HasAudio">PlayerControl(stop)</onload>
     <onload>Skin.Reset(keepMusicMenuActive)</onload>
+	<onload>Skin.SetString(pvrCurrentDir,"")</onload>
     <animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
     <animation effect="fade" start="0" end="100" time="1000" reversible="true">WindowOpen</animation>
     <controls>
@@ -64,7 +65,9 @@
             <height>5-row</height>
             <visible>Container(9000).Position(0)</visible>
             <onleft>9000</onleft>
-            <content sortby="label" target="tvrecordings">pvr://recordings/active/</content>
+            <content sortby="label" target="noop">pvr://recordings/active/</content>
+			<onclick>Skin.SetString(pvrCurrentDir, "$INFO[ListItem.Label]")</onclick>
+			<onclick>ActivateWindow(tvrecordings,"$INFO[ListItem.FolderPath]")</onclick>
             <itemlayout height="45" width="4-col">
                 <control type="image">
                     <aspectratio>stretch</aspectratio>
@@ -197,6 +200,7 @@
                         <label2></label2>
                         <label>TV Recordings</label>
                         <thumb>-</thumb>
+						<onclick>Skin.SetString(pvrCurrentDir, "Default")</onclick>
                         <onclick>ActivateWindow(tvrecordings,pvr://recordings/active/Default/,return)</onclick>
                     </item>
                     <item>

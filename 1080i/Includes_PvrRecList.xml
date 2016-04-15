@@ -11,7 +11,9 @@
                         <width>18-col</width>
                         <height>8-row</height>
                         <onleft>9950</onleft>
-                        <onfocus condition="Container($PARAM[ListId]).ListItem.IsFolder">ReplaceWindow(tvrecordings,$INFO[Container(9950).ListItem.FolderPath])</onfocus>
+							<onfocus>Container.Update("$INFO[Container(9950).ListItem.FolderPath]",replace)</onfocus>
+						<onfocus>Control.SetFocus(50,0)</onfocus>
+                        <!--onfocus condition="Container($PARAM[ListId]).ListItem.IsFolder">ReplaceWindow(tvrecordings,$INFO[Container(9950).ListItem.FolderPath])</onfocus-->
                         <pagecontrol>$PARAM[ScrollId]</pagecontrol>
                         <content sortby="date" sortorder="$PARAM[SortOrder]">$INFO[Container(9950).ListItem.FolderPath]</content>
                         <itemlayout width="18-col" height="1-row">
