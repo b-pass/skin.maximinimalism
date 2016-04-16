@@ -139,8 +139,6 @@
                     </control>
                     
 					<control type="list" id="50">
-						<onfocus condition='StringCompare(Container(9950).ListItem.Label,"(Recent)") + Container.SortDirection(ascending)'>Container.SetSortDirection</onfocus>
-						<onfocus condition='!StringCompare(Container(9950).ListItem.Label,"(Recent)") + !Container.SortDirection(ascending)'>Container.SetSortDirection</onfocus>
 						<posx>col-6-begin</posx>
                         <posy>-12</posy>
                         <width>18-col</width>
@@ -167,7 +165,7 @@
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>-</shadowcolor>
 								<visible>IsEmpty(ListItem.EpisodeName)</visible>
-                                <label>!!!$INFO[ListItem.Label]</label>
+                                <label>$INFO[ListItem.Label]</label>
                             </control>
                             <control type="label">
                                 <posx>20</posx>
@@ -177,7 +175,7 @@
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>-</shadowcolor>
 								<visible>!IsEmpty(ListItem.EpisodeName) + !StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
-                                <label>!!!$INFO[ListItem.EpisodeName]</label>
+                                <label>$INFO[ListItem.EpisodeName]</label>
                             </control>
                             <control type="label">
                                 <posx>20</posx>
@@ -187,7 +185,7 @@
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>-</shadowcolor>
 								<visible>!IsEmpty(ListItem.EpisodeName) + StringCompare(Container(9950).ListItem.Label,"(Recent)")</visible>
-                                <label>!!!$INFO[ListItem.Label] - $INFO[ListItem.EpisodeName]</label>
+                                <label>$INFO[ListItem.Label] - $INFO[ListItem.EpisodeName]</label>
                             </control>
                             <control type="label">
                                 <visible>!IsEmpty(ListItem.PlayCount) + !ListItem.IsResumable</visible>
@@ -512,7 +510,7 @@
                                 <font>small</font>
                                 <textcolor>selected</textcolor>
                                 <shadowcolor>black</shadowcolor>
-                                <label>$INFO[Container(50).ListItem.ChannelName]   |   $INFO[Container(50).ListItem.StartDate] at $INFO[Container(50).ListItem.StartTime]</label>
+                                <label>$INFO[Container(50).ListItem.Duration]  |  $INFO[Container(50).ListItem.ChannelName]  |  $INFO[Container(50).ListItem.StartDate] at $INFO[Container(50).ListItem.StartTime]</label>
                             </control>
                             <control type="textbox">
                                 <posx>5-col</posx>
