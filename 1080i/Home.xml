@@ -72,13 +72,13 @@
                 <control type="image">
                     <aspectratio>stretch</aspectratio>
                     <texture>colors/black.png</texture>
-                    <colordiffuse>40FFFFFF</colordiffuse>
+                    <colordiffuse>80FFFFFF</colordiffuse>
                 </control>
                 <control type="label">
                     <posx>10</posx>
                     <posy>-5</posy>
                     <font>regular</font>
-                    <textcolor>selected</textcolor>
+                    <textcolor>accented</textcolor>
                     <label>$INFO[ListItem.Label]</label>
                 </control>
             </itemlayout>
@@ -86,13 +86,13 @@
                 <control type="image">
                     <aspectratio>stretch</aspectratio>
                     <texture>colors/black.png</texture>
-                    <colordiffuse>40FFFFFF</colordiffuse>
+                    <colordiffuse>80FFFFFF</colordiffuse>
                 </control>
                 <control type="label">
                     <posx>10</posx>
                     <posy>-5</posy>
                     <font>regular</font>
-                    <textcolor>selected</textcolor>
+                    <textcolor>accented</textcolor>
                     <label>$INFO[ListItem.Label]</label>
                 </control>
             </focusedlayout>
@@ -100,7 +100,7 @@
                 <control type="image">
                     <aspectratio>stretch</aspectratio>
                     <texture>colors/black.png</texture>
-                    <colordiffuse>40FFFFFF</colordiffuse>
+                    <colordiffuse>80FFFFFF</colordiffuse>
                 </control>
                 <control type="label">
                     <posx>10</posx>
