@@ -16,6 +16,7 @@
                 <width>24-col</width>
                 <height>18-row</height>
                 <ondown>activateWindow(home)</ondown>
+                <onright>activateWindow(home)</onright>
                 <itemlayout width="6-col" height="6-col">
                     <control type="image">
                         <posx>0</posx>

@@ -36,7 +36,7 @@
                 <label>$INFO[System.Date(DDD)], $INFO[System.Date(MMM)] [B]$INFO[System.Date(dd)][/B]</label>
             </control>
             <control type="label">
-                <visible/>
+                <visible>!IsEmpty(weather.conditions)</visible>
                 <posx>0</posx>
                 <posy>172</posy>
                 <width>24-col</width>
@@ -129,8 +129,8 @@
                 <posy>0</posy>
                 <width>10-col</width>
                 <height>10-row</height>
-                <!--onup>ActivateWindow(systeminfo)</onup>
-                <ondown>ActivateWindow(weather)</ondown-->
+                <onleft>ActivateWindow(systeminfo)</onleft>
+                <!--ondown>ActivateWindow(weather)</ondown-->
                 <onright>9900</onright>
                 <itemlayout width="10-col" height="75">
                     <control type="label">
@@ -283,6 +283,13 @@
                         <label2></label2>
                         <thumb>-</thumb>
                         <onclick>ActivateWindow(settings)</onclick>
+                    </item>
+                    <item>
+                        <label>Weather</label>
+                        <label2></label2>
+                        <thumb>-</thumb>
+						<visible>Weather.IsFetched</visible>
+                        <onclick>ActivateWindow(weather)</onclick>
                     </item>
                     <item>
                         <label>31004</label>
