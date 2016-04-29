@@ -128,12 +128,31 @@
                         <label2></label2>
                         <thumb>-</thumb>
                         <onclick>sendclick(5)</onclick>
+                        <visible>Window.IsActive(PVRGuideInfo)</visible>
                     </item>
                     <item id="2">
                         <label>264</label>
                         <label2></label2>
                         <thumb>-</thumb>
                         <onclick>SendClick(6)</onclick>
+                        <visible>Window.IsActive(PVRGuideInfo)</visible>
+                    </item>
+                    <item id="3">
+                        <label>19003</label>
+                        <thumb>-</thumb>
+                        <onclick>SendClick(4)</onclick>
+                        <visible>Window.IsActive(PVRGuideInfo)</visible>
+                    </item>
+                    <item id="4">
+                        <label>186</label>
+                        <thumb>-</thumb>
+                        <onclick>SendClick(7)</onclick>
+                    </item>
+                    <item id="5">
+                        <label>19687</label>
+                        <thumb>-</thumb>
+                        <onclick>SendClick(8)</onclick>
+                        <visible>Window.IsActive(PVRGuideInfo)</visible>
                     </item>
                 </content>
             </control>
@@ -141,11 +160,20 @@
         <!--buttons-->
         <control type="group">
             <visible>false</visible>
+            <control type="button" id="4">
+                <description>Find similar</description>
+            </control>
             <control type="button" id="5">
                 <description>Switch to Channel</description>
             </control>
             <control type="button" id="6">
                 <description>Record</description>
+            </control>
+            <control type="button" id="7">
+                <description>OK</description>
+            </control>
+            <control type="button" id="8">
+                <description>Play recording</description>
             </control>
         </control>
         <!--debugging-->
